@@ -13,7 +13,7 @@ const createAlunos = (dados) =>{
     img.classList.add('dados')
     span.classList.add('dados')
     a.id = dados.matricula
-    a.href = './desempenho.html'
+    a.href = './dados.html'
 
     if (dados.status == 'Cursando') {
         a.classList.add('cards-azul')
@@ -105,25 +105,6 @@ const createOption = (ano) => {
 
     return option
 }
-
-const loadForm = async () => {
-    const form = document.getElementById('ano-conclusao')
-    const data = await getAnos(localStorage.getItem('curso'))
-
-    const anos = data.map(year)
-    const anosCorrigido = [...new Set(anos)]
-    anosCorrigido.sort((a, b) => a - b)
-
-    const options = anosCorrigido.map(createOption)
-
-    form.replaceChildren(...options)
-}
-
-loadForm()
-
-const form = document.getElementById('ano-conclusao')
-
-
 
 form.addEventListener('change', () => {
 
